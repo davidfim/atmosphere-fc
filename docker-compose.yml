@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=david
+      - POSTGRES_PASSWORD=qwertyuiop
+    ports:
+      - '5437:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    tty: true
+
+  # mysql:
+  #   image: mysql
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=qwertyuiop
+  #   ports:
+  #     - 3308:3306
+  #   tty: true
+
+  # nats:
+  #   image: nats:2.9-alpine
+  #   ports:
+  #     - 4222:4222
+  #     - 8222:8222
+  #   command: -js --auth youneedreplacethiswithsomerandomstring
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: '0.1'
+  #         memory: 128M
+  #   tty: true
+
+  # redis:
+  #   image: redis:7.0-alpine
+  #   ports:
+  #     - 6379:6379
+  #   tty: true
+
+volumes:
+  postgres_data:
